@@ -1,0 +1,31 @@
+﻿<Application x:Class="WpfApp2.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfApp2"
+             xmlns:vm="clr-namespace:WpfApp2.viewModel"
+             xmlns:view="clr-namespace:WpfApp2.view">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="utilities/styles/buttons.xaml"/>
+                <ResourceDictionary Source="utilities/styles/textblocks.xaml"/>
+                <ResourceDictionary Source="utilities/styles/textbox.xaml"/>
+                <ResourceDictionary Source="utilities/styles/combobox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type vm:tableVM}">
+                <view:table/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:addMemberVM}">
+                <view:addMember/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AuthorizationVM}">
+                <view:Authorization/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:customerVM}">
+                <view:customers/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="WpfApp2.view.table"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp2.view"
+             xmlns:vm="clr-namespace:WpfApp2.viewModel"
+             mc:Ignorable="d"
+             Background="#FFE4E1"
+             Height="410">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0">
+            <DataGrid ItemsSource="{Binding Users}"
+                      SelectedItem="{Binding SelectedUser}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Логин" Width="150" Binding="{Binding login}"/>
+                    <DataGridTextColumn Header="Пароль" Width="150" Binding="{Binding password}"/>
+                    <DataGridTextColumn Header="Роль" Width="100" Binding="{Binding role}"/>
+                    <DataGridTextColumn Header="Ф.И.О" Width="150" Binding="{Binding fio}"/>
+                    <DataGridTextColumn Header="Фото" Width="150" Binding="{Binding photo}" CanUserSort="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        <Grid Grid.Row="1">
+            <Button Content="Добавить" 
+                    Style="{StaticResource button_standard}"
+                    HorizontalAlignment="Left" 
+                    Margin="10,5,0,0" 
+                    ToolTip="Добавить пользователя"
+                    Command="{Binding AddUserCommand}"/>
+            <Button Content="Удалить" 
+                    Style="{StaticResource button_standard}"
+                    HorizontalAlignment="Right" 
+                    Margin="0,5,10,0"
+                    ToolTip="Удалить пользователя (выбрать в таблице и нажать)"
+                    Command="{Binding DeleteUserCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>
